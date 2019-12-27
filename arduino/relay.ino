@@ -30,14 +30,15 @@ void loop() {
     delay(60);  //delay to allow buffer to fill
     if (Serial.available() >0) {
       char c = Serial.read();  //gets one byte from serial buffer
-      readString += c; //makes the string readString
+      readString += c; //append read byte to string
     }
   }
 
   if (readString.length() >0) {
+      //convert integer to relay and state values
       i = readString.toInt();
-      r = (i / 10);
-      s = (i % 10);
+      r = (i / 10); //relay
+      s = (i % 10); //state
 
       if (getIntCount(i>=2)) {
           if (setRelay(r, s)) {
@@ -59,7 +60,7 @@ void loop() {
 }
 
 bool setRelay(int r, bool s) {
-      int rPin = (r + 1); //relays 1-n
+      int rPin = (r + 1);
 
       if (s==1 && digitalRead(rPin)==HIGH) {
         digitalWrite(rPin, LOW); //on
