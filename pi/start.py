@@ -5,23 +5,22 @@ import tkinter as tk
 from pi.src.light import Light
 from pi.src.arduino import Arduino
 
-port = 'COM10'
-baud = 9600
-timeout = 5
-s = serial.Serial(port, baud, timeout=5)
-controller = Arduino(s, time)
-
-lights = {}
-
-winHeight = 400
-winWidth = 400
-
-container = tk.Tk()
-frame = tk.Frame(container)
-frame.pack()
-
 with open('config/app.json') as config_file:
     data = json.load(config_file)
+
+    baud = 9600
+    timeout = 5
+    s = serial.Serial(data['port'], baud, timeout=5)
+    controller = Arduino(s, time)
+
+    lights = {}
+
+    winHeight = 400
+    winWidth = 400
+
+    container = tk.Tk()
+    frame = tk.Frame(container)
+    frame.pack()
 
     for l in data['lights']:
         lightNum = l['number']
