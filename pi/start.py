@@ -19,6 +19,7 @@ with open('config/app.json') as config_file:
     winWidth = 400
 
     container = tk.Tk()
+    container.title(data['title'])
     frame = tk.Frame(container)
     frame.pack()
 

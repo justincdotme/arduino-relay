@@ -1,5 +1,6 @@
 {
   "port": "COM10",
+  "title": "Lighting Control Panel",
   "lights": [
     {
       "number": 1,
