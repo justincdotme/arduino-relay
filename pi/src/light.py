@@ -8,12 +8,18 @@ class Light:
         return self._num
 
     def set_state(self, state):
-        self._state = state
-        response = self._controller.send(
-            str(str(self._num) + str(self._state)).encode()
-        )
-        #todo: return boolean value from response
-        return self
+
+        if state != self._state:
+            result = self._controller.send(
+                str(str(self._num) + str(state)).encode()
+            )
+
+            if result:
+                self._state = state
+
+            return result
+
+        return False
 
     def get_state(self):
         return self._state

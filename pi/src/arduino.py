@@ -7,6 +7,7 @@ class Arduino:
     def send(self, val):
         self._serial.write(val)
         self._time.sleep(1)
+
         i=0
         msg = ""
         while (i<2):
@@ -15,4 +16,5 @@ class Arduino:
             ))
 
             i = i+1
-        return msg
+
+        return 'TRUE' in msg
