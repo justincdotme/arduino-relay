@@ -8,11 +8,11 @@ class Light:
         return self._num
 
     def set_state(self, state):
-
         if state != self._state:
-            result = self._controller.send(
-                str(str(self._num) + str(state)).encode()
-            )
+            if 1 == state:
+                result = self._controller.turn_on(self._num)
+            else:
+                result = self._controller.turn_off(self._num)
 
             if result:
                 self._state = state

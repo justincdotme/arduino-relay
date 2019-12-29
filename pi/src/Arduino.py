@@ -18,3 +18,17 @@ class Arduino:
             i = i+1
 
         return 'TRUE' in msg
+
+    def turn_on(self, num):
+        return self.send(
+            str(
+                str(num) + str(1)
+            ).encode()
+        )
+
+    def turn_off(self, num):
+        return self.send(
+            str(
+                str(num) + str(0)
+            ).encode()
+        )

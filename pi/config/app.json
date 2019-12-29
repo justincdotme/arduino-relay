@@ -1,6 +1,10 @@
 {
   "port": "COM10",
-  "title": "Lighting Control Panel",
+  "app": {
+    "title": "Lighting Control Panel",
+    "window_height": 400,
+    "window_width": 400
+  },
   "lights": [
     {
       "number": 1,
